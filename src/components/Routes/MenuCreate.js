@@ -9,7 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Layout from './Layout'
-import moment from 'moment'
+// import moment from 'moment'
 
 class MenuCreate extends Component {
   constructor () {
@@ -17,11 +17,11 @@ class MenuCreate extends Component {
 
     this.state = {
       menu: {
-        date: '',
-        breakfast: '',
-        lunch: '',
-        snack: '',
-        dinner: ''
+        date: new Date(),
+        breakfast: null,
+        lunch: null,
+        snack: null,
+        dinner: null
       },
       focused: false,
       redirectedId: null
@@ -29,9 +29,6 @@ class MenuCreate extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({
-      date: moment(this.state.date).format('L')
-    })
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -41,7 +38,15 @@ class MenuCreate extends Component {
     event.preventDefault()
     // this.setState = { date: this.state.date.format('L') }
     const { msgAlert, user } = this.props
-    menuCreate(this.state, user)
+    const { date, breakfast, lunch, snack, dinner } = this.state
+    const menu = {
+      date: date.toISOString().substring(0, 10),
+      breakfast: breakfast,
+      lunch: lunch,
+      snack: snack,
+      dinner: dinner
+    }
+    menuCreate(menu, user)
       .then(() => msgAlert({
         heading: 'Added to your inventory!',
         message: messages.menuCreateSuccess,
@@ -70,6 +75,8 @@ class MenuCreate extends Component {
                 <Form.Label>Select the date
                   <span><BsFillCalendarFill />&nbsp;</span>
                   <DatePicker
+                    className="form-control"
+                    dateFormat="yyyy-MM-dd"
                     selected={this.state.date}
                     onChange={date => this.setState({ date: date })}
                     focused={this.state.focused}
@@ -82,7 +89,7 @@ class MenuCreate extends Component {
                 <Form.Control
                   required
                   name="breakfast"
-                  value={breakfast}
+                  value={breakfast || ''}
                   type="text"
                   placeholder="Enter your breakfast choice"
                   onChange={this.handleChange}
@@ -93,7 +100,7 @@ class MenuCreate extends Component {
                 <Form.Control
                   required
                   name="lunch"
-                  value={lunch}
+                  value={lunch || ''}
                   type="text"
                   placeholder="Enter your lunch choice"
                   onChange={this.handleChange}
@@ -104,7 +111,7 @@ class MenuCreate extends Component {
                 <Form.Control
                   required
                   name="snack"
-                  value={snack}
+                  value={snack || ''}
                   type="text"
                   placeholder="Enter your snack choice"
                   onChange={this.handleChange}
@@ -115,7 +122,7 @@ class MenuCreate extends Component {
                 <Form.Control
                   required
                   name="dinner"
-                  value={dinner}
+                  value={dinner || ''}
                   type="text"
                   placeholder="Enter your dinner choice"
                   onChange={this.handleChange}

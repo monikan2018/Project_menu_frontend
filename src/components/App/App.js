@@ -10,7 +10,10 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import Home from '../Routes/Home'
 import MenuCreate from '../Routes/MenuCreate'
+import MenuShow from '../Routes/MenuShow'
 import MenuDelete from '../Routes/MenuDelete'
+import MenuEdit from '../Routes/MenuEdit'
+
 // import MenuEdit from '../Route/MenuEdit'
 //  import MenuShow from '../Route/MenuShow'
 
@@ -65,8 +68,14 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/menu-create' render={() => (
             <MenuCreate msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/menu-delete' render={() => (
+          <AuthenticatedRoute user={user} exact path='/menu-delete/:id' render={() => (
             <MenuDelete msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/menu-edit/:id' render={() => (
+            <MenuEdit msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/menu' render={() => (
+            <MenuShow msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>

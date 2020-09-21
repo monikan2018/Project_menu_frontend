@@ -6,7 +6,6 @@ import { show } from '../../api/menu'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 
-
 class Menu extends Component {
   constructor (props) {
     // this makes sure that `this.props` is set in the constructor
@@ -38,7 +37,52 @@ class Menu extends Component {
       })
   }
 
+  destroyItem = (user) => {
+    const { msgAlert } = this.props
+    axios({
+      headers: {
+        'Authorization': `Token ${this.props.user.token}`
+      },
+      url: `${apiUrl}/menus/${this.props.match.params.id}`,
+      method: 'DELETE'
+    })
+      // update their `deleted` state to be `true`
+      // .then(res => this.setState({ items: res.data.items }))
+      .then(() => msgAlert({
+        heading: 'Item removed!',
+        message: messages.itemDeleteSuccess,
+        variant: 'success'
+      }))
+      .then(() => this.setState({ deleted: true }))
+      .catch(console.error)
+      .catch(error => {
+        msgAlert({
+          heading: 'Failed to remove item.' + error.message,
+          message: messages.itemDeleteFailure,
+          variant: 'danger'
+        })
+      })
+  }
 
+  render () {
+    // destructure our item property out of state
+    const { item, deleted } = this.state
+
+    // if we don't have a item (item is null)
+    if (!item) {
+      return <p>Loading...</p>
+    }
+
+    // if the deleted state is true
+    if (deleted) {
+      // redirect to the home page
+      return <Redirect to={{
+        // Redirect to the home page ('/')
+        pathname: '/items',
+        // Pass along a message, in state, that we can show
+        state: { message: 'Deleted item successfully' }
+      }} />
+    }
 
     return (
       <Layout>
