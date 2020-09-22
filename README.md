@@ -1,129 +1,67 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+FAMILY MENU
 
-# react-auth-template
+FAMILY MENU is an web application built to plan family meals by making joint family efforts. Family members can access the menu and add meals for the day. They can also look at all the menu enteries and can edit meals or delete the daily entry.
 
-A front-end framework template for starting projects with a recent version of
-either the [Rails API Template](https://git.generalassemb.ly/ga-wdi-boston/rails-api-template)
-or the [Express API Template](https://git.generalassemb.ly/ga-wdi-boston/express-api-template).
+## Important Links
 
-## Installation
+- [Deployed Client]()
+- [Client Repo](https://github.com/monikan2018/Project_menu_frontend)
+- [Deployed API]()
+- [API Repo](https://github.com/monikan2018/Project_menu_backend)
 
-1. [Download](../../archive/master.zip) this template.
-1. Unzip and rename the template directory (`unzip ~/Downloads/react-auth-template-master.zip`).
-1. Move into the new project and `git init`.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace `react-auth-template` in `package.json` with your
-   projects name.
-1. Replace the `"homepage"` field in `package.json` with your (public) Github
-   account name and repository name.
-1. Install dependencies with `npm install`.
-1. `git add` and `git commit` your changes.
-1. Run the development server with `npm start`.
+## Planning Story
 
-## Deployment
+The first step was to decide on the prompt and prepare schedule to deliver the project ontime. I decided to make the we all struggle with everyday to plan family meals. I initially started with the planning out with Asana but not working in team made me not being actively filling the enteries in Asana. I went back to using paper and pen to plan out. I first desigend the schema for the database and then completed the backend. Next I designed the wireframes for the application and realized the redundant data and also to add date instead of day in order to make improvement in frontend in future iterations.
 
-Before deploying, you first need to make sure the `homepage` key in your
-`package.json` is pointing to the correct value. It should be the url of your
-deployed application.
+In this project we had a choice to pick frontend and backend of our choice. Since I wanted to challenge myself and learn Django I picked Django for backend and React for frontend. After completeing the backend and the wireframes, I started working on the frontend. For the first time I used react to manipulate dates and to create a table with the buttons that perform edit and delete operations. I tried different date pickers but was not able to store the date. I decided to use react-datepicker and learned how store changes to Object and run it through axios. I did not want to stop on create as it was day 3 as I was still stuck on add the record. I decided to complete the code for other crud operations.
+After fixing the date error, it took a lot of google search to understand how in react you can access the id for rows in the table that you populated data with. Lot of GA's instructors help and google search helped out in completing this project.
 
-To deploy you should first make sure you are on the `master` branch with a
-clean working directory, then you can run `npm run deploy` and wait to see if
-it runs successfully.
+### User Stories
 
-## About
+- As an unregistered user, I would like to sign up with email and password.
+- As a registered user, I would like to sign in with email and password.
+- As a signed in user, I would like to change password.
+- As a signed in user, I would like to sign out.
+- As a signed in user, I would like to add meals to menu.
+- As a signed in user, I would like to update meals in menu.
+- As a signed in user, I would like to delete any day's menu.
+- As a signed in user, I would like to see all days meals.
+- As a signed in user, I would like to see the meals that I am updating.
+- As a signed in user, I want to be able to update or create inventory without
+  having to know what my current inventory levels are.
+- If the user wants to update a day , the app should not allow user to change
+  date and with PATCH request update the existing menu.
 
-This template is derived from GA Boston's [react-template](https://git.generalassemb.ly/ga-wdi-boston/react-template).
-Most of the development dependencies, such as linters, SCSS compiler, Webpack
-config, NPM scripts, etc in this repo come from there.
+### Technologies Used
 
-It includes all the components and routes needed to sign up, sign in, change
-passwords, and sign out of an API built with either template linked above, with
-no need for modification.
+- React.js
+- Javascript
+- HTML/CSS
+- Sass
+- Bootstrap
+- Axios
+- Django
+- proto(UI design)
 
-**NOTE**: You should customize the included components to suit you app! They're
-provided as a guide and a bare minimum of functionality and style. Consider
-changing the provided SCSS styles, modifying the auth code, improving the flash
-messages, etc.
+### Unsolved Problems
 
-## Structure
+In future iterations, we'd like to ...
 
-The top-level `App` component stores the currently authenticated
-user in state, as well as data related to the flash messages. `App` renders the
-`Header` component, and a list of routes, each of which render a component from
-`src/components`. The `src/api` directory has a component file, `auth.js`, which
-contains all the needed `axios` calls pertaining to authentication.
+- Add a suggestion box for famiy members to list their suggestions
+- Allow family members to have their own login and does not allow them to edit the menu
+- Shoud be able to fo back and look at monthly menu by allowing date range to get records
+- To connect the meals with recipes that also updates the grocery list
+- Add the grocery list in the qrcode to have the list easily accessible on any device.
 
-You can follow this pattern in your app as well. For instance, if you are making
-an app that keeps track of books, you might want a `src/api/books.js`, which
-contains its own `axios` call pertaining to your books resource CRUD actions.
-Using a separate directory within `components` for each individual component you
-add makes it easy to locate and update components and has the added benefit of
-making it easy to create custom styles that apply to that specific component.
-To apply component specific styles, add a file to the component's directory such
-as `ComponentName.scss` and then import it directly into the component with
-`import './ComponentName.scss'`.  This will keep your styles modularized and
-make it easier to make changes at the component level.
+## Images
 
-## Features
+#### Wireframe:
 
-### `<AuthenticatedRoute />`
-
-This template contains a handy component for creating routes that require a
-user to be authenticated before visiting. This component lives in
-`src/auth/components/AuthenticatedRoute.js` and is already required in `App`.
-It's a thin wrapper around React Router's `<Route />` component. The only
-difference is that it expects a prop called `user`, and if that prop is falsy,
-it will render a `<Redirect />` that takes the user to `/`. **To use
-it, you must pass it the user as a prop!**
-
-It supports both the `component=` and `render=` attributes, but like `<Route />`
-it will not forward props to the component if you use `component=`.
-
-### `<AutoAlertDismiss />` Component
-
-This template also already contains a component that displays user messages.
-Messages are configurable via redux actions.  This component can be found in
-`src/components/AutoAlertDismiss/AutoAlertDismiss.js`. **There is no need to add
-this component to your app. It is already required in `App`.**  A single
-component instance is used to manage all alerts application-wide.
-
-The alert can be used by passing the `alertMsg` method to a rendered route.  The
-`alertMsg` method expects an object with a `heading`, `message`, and a `variant` property.
-
-Use this component in conjunction with the `messages.js` file in the same
-directory to create and manage all of your application messages in one place.
-
-The `variant` property must be a Bootstrap alert variant, as this component is merely a
-wrapper around the [react-bootstrap Alert
-component](https://react-bootstrap.github.io/components/alerts/).  The types it
-will accept are: 'primary', 'secondary', 'success', 'danger', 'warning', 'info',
-'light', and 'dark'.
-
- To change the duration of the message, replace `5000` with a value of your
- choice (in milliseconds) in this component's `componentDidMount` method.
-
-### `src/apiConfig.js`
-
-Just like in
-[browser-template](https://git.generalassemb.ly/ga-wdi-boston/browser-template),
-this file will determine whether you're in a production or development
-environment and choose an API URL accordingly. Don't forget to replace the
-`production` URL with your deployed API's URL.
-
-## Tasks
-
-Developers should run these often!
-
-- `npm run nag`: runs code quality analysis tools on your code and complains.
-- `npm run make-standard`: reformats all your code in the JavaScript Standard
-  Style.
-- `npm run start`: generates bundles, watches, and livereloads.
-- `npm run build`: place bundled styles and scripts where `index.html` can find
-    them
-- `npm run deploy`: builds and deploys master branch
-
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+[Home](https://i.imgur.com/tS3EzJZ.png)
+[Sign Up](https://i.imgur.com/sFwLaQd.png)
+[Sign In](https://i.imgur.com/Qd68vvF.png)
+[Home After Sign In](https://i.imgur.com/KkYnCkp.png)
+[CREATE](https://i.imgur.com/wXZXVSo.png)
+[INDEX](https://i.imgur.com/VWYUayA.png)
+[SHOW](https://i.imgur.com/C2mGgiJ.png)
+[UPDATE](https://i.imgur.com/bstvqqh.png)

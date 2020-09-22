@@ -30,11 +30,11 @@ class MenuEdit extends Component {
     show(this.props.match.params.id, user)
       .then(res => this.setState({ menu: res.data.menu }))
       .then(() => console.log(this.state))
-      .then(() => msgAlert({
-        heading: 'Here you go!',
-        message: messages.menuShowSuccess,
-        variant: 'success'
-      }))
+      // .then(() => msgAlert({
+      //   heading: 'Here you go!',
+      //   message: messages.menuShowSuccess,
+      //   variant: 'success'
+      // }))
       // .then(() => history.push('/'))
       .catch(error => {
         msgAlert({

@@ -20,7 +20,7 @@ class MenuDelete extends Component {
     //  const { menu, deleted } = this.state
     menuDelete(this.props.match.params.id, user)
       .then(() => msgAlert({
-        heading: 'Day from Menu Removed',
+      //   heading: 'Day from Menu Removed',
         message: messages.menuDeleteSuccess,
         variant: 'success'
       }))

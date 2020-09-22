@@ -12,17 +12,21 @@ $black-font: #000;
   letter-spacing: 2px;
 }
 
+
 body {
   background-color: $background-color;
   font-family: sans-serif;
 }
 
 table {
-  width: 50%;
+  width: 100%;
+}
+th {
+  background-color: lightgrey;
 }
 
 table, th, td {
-  border: 1px solid lightgrey;
+  border: 1px solid #555555;
   border-collapse: collapse;
 }
 

@@ -48,7 +48,7 @@ class MenuCreate extends Component {
     }
     menuCreate(menu, user)
       .then(() => msgAlert({
-        heading: 'Added to your inventory!',
+        // heading: 'Added to your inventory!',
         message: messages.menuCreateSuccess,
         variant: 'success'
       }))

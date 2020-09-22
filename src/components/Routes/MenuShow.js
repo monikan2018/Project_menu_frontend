@@ -16,13 +16,15 @@ class MenuShow extends Component {
   // handleChange = event => setState({
   //   [event.target.name]: event.target.value
   // })
+
+  // get all the days added
   componentDidMount () {
     const { user, msgAlert } = this.props
     index(this.state, user)
       .then(res => this.setState({ menu: res.data.menus }))
       .then(() => console.log(this.state))
       .then(() => msgAlert({
-        heading: 'Here\'s weekly Menu!',
+        // heading: 'Here\'s weekly Menu!',
         message: messages.menuIndexSuccess,
         variant: 'success'
       }))
@@ -35,31 +37,6 @@ class MenuShow extends Component {
         })
       })
   }
-  // onDelete () {
-  //   event.preventDefault()
-  //   const { msgAlert, user } = this.props
-  //   // const { menu, deleted } = this.state
-  //   menuDelete(this.props.match.params.id, user)
-  //     .then(() => msgAlert({
-  //       heading: 'Day from Menu Removed',
-  //       message: messages.menuDeleteSuccess,
-  //       variant: 'success'
-  //     }))
-  //     .then(() => {
-  //       this.setState({ deleted: true })
-  //     })
-  //     .then(() => <Redirect to={{ pathname: '/menu/'
-  //     }} />)
-  //     .catch(console.error)
-  //     .catch(error => {
-  //       msgAlert({
-  //         heading: 'Failed to remove item.' + error.message,
-  //         message: messages.menuDeleteFailure,
-  //         variant: 'danger'
-  //       })
-  //     })
-  // }
-
   render () {
     const menuData = this.state.menu.map((menu) => {
       return (
@@ -92,6 +69,8 @@ class MenuShow extends Component {
               <th scope="col">Lunch</th>
               <th scope="col">Snack</th>
               <th scope="col">Dinner</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
             </tr>
             {menuData}
           </tbody>
