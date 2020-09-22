@@ -42,6 +42,7 @@ After fixing the date error, it took a lot of google search to understand how in
 - Axios
 - Django
 - proto(UI design)
+- Lucidchart
 
 ### Unsolved Problems
 
@@ -56,12 +57,10 @@ In future iterations, we'd like to ...
 ## Images
 
 #### Wireframe:
-
-[Home](https://i.imgur.com/tS3EzJZ.png)
-[Sign Up](https://i.imgur.com/sFwLaQd.png)
-[Sign In](https://i.imgur.com/Qd68vvF.png)
-[Home After Sign In](https://i.imgur.com/KkYnCkp.png)
-[CREATE](https://i.imgur.com/wXZXVSo.png)
-[INDEX](https://i.imgur.com/VWYUayA.png)
-[SHOW](https://i.imgur.com/C2mGgiJ.png)
-[UPDATE](https://i.imgur.com/bstvqqh.png)
+[ERD]https://app.lucidchart.com/documents/view/4817cabd-f8da-4a1f-a70c-2825b4d5f39a/0_0#?folder_id=home&browser=icon
+[Home](https://i.imgur.com/zVmPXau.png)
+[Sign Up](https://i.imgur.com/tSZEbx2.png)
+[Sign In](https://i.imgur.com/PemHvsQ.png)
+[CREATE](https://i.imgur.com/NjAAvJf.png)
+[SHOW](https://i.imgur.com/z9Fzlo0.png)
+[UPDATE](https://i.imgur.com/GN5FlQu.png)
